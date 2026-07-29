@@ -167,6 +167,7 @@ p{margin:0}
 .mobile-nav{display:none; border-top:1px solid var(--line); background:#fff; padding:14px 0 22px}
 .mobile-nav.is-open{display:block}
 .mobile-nav a{display:block; padding:13px 0; text-decoration:none; font-weight:600; font-family:var(--ff-display); border-bottom:1px solid var(--line)}
+.mobile-nav a.btn{display:inline-flex; align-items:center; justify-content:center; padding:14px 22px; font-size:.95rem; border-bottom:0}
 .mobile-nav .btn{margin-top:18px}
 
 /* ============================================================
@@ -647,6 +648,7 @@ p{margin:0}
    SOBRE
    ============================================================ */
 .about{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(32px,5vw,64px); align-items:center}
+.about__media{position:relative}
 .about__photo{
   position:relative; border-radius:var(--r-lg); overflow:hidden;
   aspect-ratio:4/5; background:var(--navy-tint);
@@ -751,10 +753,15 @@ p{margin:0}
   opacity:0; visibility:hidden; transform:translateY(16px);
   transition:opacity .3s ease, transform .3s ease, visibility .3s ease, background-color .2s ease;
 }
-.wa-float.is-visible{opacity:1; visibility:visible; transform:translateY(0)}
-.wa-float:hover{background:var(--wa-dark)}
+.wa-float.is-visible{opacity:1; visibility:visible; transform:translateY(0); animation:wa-pulse 2.8s ease-in-out infinite}
+.wa-float:hover{background:var(--wa-dark); animation-play-state:paused}
 .wa-float svg{width:23px; height:23px}
 .wa-float__label{white-space:nowrap}
+
+@keyframes wa-pulse{
+  0%,100%{box-shadow:0 12px 28px -8px rgba(5,59,27,.5), 0 0 0 0 rgba(37,211,102,.35)}
+  50%{box-shadow:0 12px 28px -8px rgba(5,59,27,.5), 0 0 0 9px rgba(37,211,102,0)}
+}
 
 /* ============================================================
    ANIMAÇÃO DE ENTRADA
@@ -789,7 +796,8 @@ p{margin:0}
   .hero__grid,.pains,.about,.quotes{grid-template-columns:1fr}
   .hero__grid{gap:48px}
   .mock{order:2}
-  .about__photo{max-width:360px; margin:0 auto}
+  .about__media{max-width:360px; margin:0 auto}
+  .about__badge{position:static; left:auto; right:auto; bottom:auto; margin-top:14px}
   .burger{display:inline-flex}
   .header__cta{display:none}
   .lead,.hero__sub{max-width:none}
@@ -1265,7 +1273,7 @@ p{margin:0}
 <section class="section" id="seguranca">
   <div class="container">
     <div class="section-head section-head--center reveal">
-      <h2>Como eu tiro o risco da sua mão.</h2>
+      <h2>Como eu tiro o risco da sua mão?</h2>
       <p class="lead">Você está contratando um serviço que ainda não viu pronto. Então o processo foi montado para você nunca ficar exposto.</p>
     </div>
 
@@ -1478,9 +1486,11 @@ p{margin:0}
      ========================================================= -->
 <section class="section section--gray" id="sobre">
   <div class="container about">
-    <div class="about__photo reveal">
-      <img src="assets/img/daniel-cruz.jpg" width="1149" height="1369"
-           alt="Daniel Cruz, criador de landing pages, em Petrolina-PE" loading="lazy">
+    <div class="about__media reveal">
+      <div class="about__photo">
+        <img src="assets/img/daniel-cruz.jpg" width="1149" height="1369"
+             alt="Daniel Cruz, criador de landing pages, em Petrolina-PE" loading="lazy">
+      </div>
       <div class="about__badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.4 6.8 19.2l1-5.9L3.5 9.2l5.9-.8L12 3Z"/></svg>
         <span>Copywriting · atendimento · marketing</span>
