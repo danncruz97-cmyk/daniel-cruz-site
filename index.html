@@ -213,30 +213,30 @@ p{margin:0}
 }
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .phone__screen{
-  /* proporcao exata da captura real: 366 x 795 */
-  width:100%; aspect-ratio:366/795; border-radius:32px; overflow:hidden;
+  /* proporcao exata da captura real: 360 x 681 */
+  width:100%; aspect-ratio:360/681; border-radius:32px; overflow:hidden;
   background:#052A35; position:relative;
 }
 .phone__screen img{width:100%; height:100%; object-fit:cover; display:block}
 /* notificação WhatsApp */
 .wa-toast{
-  position:absolute; z-index:6; right:-14px; bottom:16%;
-  display:flex; align-items:center; gap:10px;
-  background:#fff; border:1px solid var(--line); border-radius:15px;
-  padding:11px 15px 11px 12px; box-shadow:var(--shadow-md);
+  position:absolute; z-index:6; right:-12px; bottom:2%;
+  display:flex; align-items:center; gap:8px;
+  background:#fff; border:1px solid var(--line); border-radius:13px;
+  padding:9px 13px 9px 10px; box-shadow:var(--shadow-md);
   opacity:0; transform:translateY(14px) scale(.94);
   animation:toastIn .65s cubic-bezier(.2,.9,.3,1.1) 1.5s forwards;
 }
 @keyframes toastIn{to{opacity:1; transform:translateY(0) scale(1)}}
 .wa-toast__icon{
-  width:34px; height:34px; border-radius:11px; background:var(--wa);
+  width:28px; height:28px; border-radius:9px; background:var(--wa);
   display:grid; place-items:center; color:#fff; flex:0 0 auto;
 }
-.wa-toast__icon svg{width:19px; height:19px}
-.wa-toast b{display:block; font-family:var(--ff-display); font-size:.84rem; letter-spacing:-.01em}
-.wa-toast small{color:var(--ink-soft); font-size:.74rem}
+.wa-toast__icon svg{width:16px; height:16px}
+.wa-toast b{display:block; font-family:var(--ff-display); font-size:.78rem; letter-spacing:-.01em}
+.wa-toast small{color:var(--ink-soft); font-size:.7rem}
 .wa-badge{
-  position:absolute; z-index:6; left:-18px; top:12%;
+  position:absolute; z-index:6; right:-18px; top:12%; max-width:200px;
   background:#fff; border:1px solid var(--line); border-radius:14px;
   padding:11px 15px; box-shadow:var(--shadow-md);
   opacity:0; animation:toastIn .6s cubic-bezier(.2,.9,.3,1.1) .9s forwards;
@@ -324,7 +324,7 @@ p{margin:0}
 
 /* proporcao das capturas dos projetos: 1273 x 935 */
 .proj-card__screen{position:relative; aspect-ratio:1273/935; overflow:hidden; background:#fff; container-type:inline-size}
-.proj-card__screen img{width:100%; height:100%; object-fit:cover; object-position:top center}
+.proj-card__screen img{width:100%; height:100%; object-fit:cover; object-position:left top}
 
 /* ------------------------------------------------------------
    Pré-visualização renderizada do site do cliente.
@@ -625,7 +625,8 @@ p{margin:0}
 /* ============================================================
    DEPOIMENTOS
    ============================================================ */
-.quotes{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+.quotes{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; justify-content:center}
+.quotes .quote{max-width:640px; width:100%; margin:0 auto}
 .quote{
   background:#fff; border:1px solid var(--line); border-radius:var(--r-lg);
   padding:34px 32px; box-shadow:var(--shadow-sm); position:relative;
@@ -690,6 +691,48 @@ p{margin:0}
 .journey__note{margin-top:15px; font-size:.88rem; color:var(--ink-soft); line-height:1.55}
 
 .about__text .btn{margin-top:30px}
+
+/* tira discreta sobre "comecando agora", abaixo do .journey */
+.about__soon{margin-top:26px}
+.about__soon strong{display:block; font-size:.92rem; color:var(--ink); margin-bottom:10px}
+.about__soon ul{margin:0; padding:0; display:grid; gap:8px}
+.about__soon li{
+  list-style:none; padding-left:16px; position:relative;
+  font-size:.88rem; color:var(--ink-soft); line-height:1.5;
+}
+.about__soon li::before{content:""; position:absolute; left:0; top:.55em; width:5px; height:5px; border-radius:50%; background:var(--navy)}
+.about__soon li strong{display:inline; font-size:inherit; margin-bottom:0; color:var(--ink)}
+
+/* ============================================================
+   CUIDADO (com plano x sem plano)
+   ============================================================ */
+.care{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch}
+.care__card{
+  background:#fff; border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:32px 28px 34px; box-shadow:var(--shadow-sm);
+  display:flex; flex-direction:column;
+}
+.care__card--navy{border:2px solid var(--navy)}
+.care__label{
+  display:block; font-family:var(--ff-body); font-weight:700; font-size:.76rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--navy); margin-bottom:14px;
+}
+.care__card h3{margin-bottom:8px}
+.care__price{font-family:var(--ff-display); font-weight:800; font-size:1.35rem; color:var(--ink); margin-bottom:22px}
+.care__list{margin:0 0 20px; padding:0; display:grid; gap:13px}
+.care__list li{list-style:none; display:flex; gap:11px; align-items:flex-start; font-size:.94rem; line-height:1.5; color:var(--ink-soft)}
+.care__list svg{width:18px; height:18px; flex:0 0 auto; margin-top:2px; color:var(--wa-dark)}
+.care__card--navy .care__list svg{color:var(--navy)}
+.care__foot{
+  margin-top:auto; padding-top:18px; border-top:1px dashed var(--line);
+  font-size:.85rem; color:var(--ink-soft); line-height:1.55;
+}
+.care-note{
+  margin:clamp(30px,4vw,44px) auto 0; max-width:720px; text-align:center;
+  background:var(--navy-tint); border-radius:var(--r-lg); padding:clamp(28px,4vw,40px);
+}
+.care-note h3{color:var(--navy); margin-bottom:12px; font-size:clamp(1.25rem,2.4vw,1.6rem)}
+.care-note p{color:var(--ink-soft); font-size:1rem; line-height:1.62; max-width:60ch; margin:0 auto}
 
 /* ============================================================
    FAQ
@@ -802,6 +845,9 @@ p{margin:0}
   .header__cta{display:none}
   .lead,.hero__sub{max-width:none}
 }
+@media (max-width:820px){
+  .care{grid-template-columns:1fr}
+}
 @media (max-width:560px){
   body{font-size:16px}
   .proj-card{flex-basis:88%}
@@ -815,8 +861,8 @@ p{margin:0}
   .hero__actions{gap:12px}
   .wa-float__label{display:none}
   .wa-float{padding:16px; right:16px; bottom:16px}
-  .wa-badge{left:-6px}
-  .wa-toast{right:-6px; padding:10px 13px}
+  .wa-badge{right:-6px}
+  .wa-toast{right:-6px; padding:8px 11px}
   .footer__rules{text-align:left}
 }
 
@@ -901,9 +947,9 @@ p{margin:0}
 
       <div class="hero__trust">
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> Entrega a partir de 3 dias úteis</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> Hospedagem e publicação inclusas</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> Sem mensalidade obrigatória</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> <span>Entrega a partir de 3 dias úteis</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> <span>Hospedagem e publicação inclusas</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg> <span>Sem mensalidade obrigatória</span></li>
         </ul>
       </div>
     </div>
@@ -914,15 +960,15 @@ p{margin:0}
 
       <div class="wa-badge">
         <span class="wa-badge__live"><i></i>No ar</span>
-        <b>Dr. Luis Eduardo</b>
-        <small>Advocacia previdenciária</small>
+        <b>Dr. Allysson e Dr. Emmanuel Benício</b>
+        <small>Advocacia Criminal e Imobiliária</small>
       </div>
 
       <div class="phone">
         <div class="phone__screen">
-          <img src="assets/img/projeto-luis-mobile.webp"
-               width="366" height="795"
-               alt="Versão mobile do site do Dr. Luis Eduardo Rodrigues de Melo, aberta no celular">
+          <img src="assets/img/projeto-allysson-mobile2.png"
+               width="360" height="681"
+               alt="Versão mobile do site do escritório Benício Advogados, aberta no celular">
         </div>
       </div>
 
@@ -932,7 +978,7 @@ p{margin:0}
         </span>
         <span>
           <b>Novo cliente</b>
-          <small>“O INSS negou meu auxílio. Pode me ajudar?”</small>
+          <small>“Preciso proteger meu patrimônio imobiliário. Pode me ajudar?”</small>
         </span>
       </div>
     </div>
@@ -1012,78 +1058,7 @@ p{margin:0}
 
       <!-- ================= PROJETO 1 ================= -->
       <a class="proj-card"
-         href="https://advogadosbenicio.com.br/"
-         target="_blank" rel="noopener noreferrer"
-         aria-label="Abrir o site do Benício Advogados em uma nova aba">
-
-        <div class="browser" aria-hidden="true">
-          <span class="browser__dots"><i></i><i></i><i></i></span>
-          <span class="browser__url">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            advogadosbenicio.com.br
-          </span>
-          <span class="browser__live"><i></i><span>No ar</span></span>
-        </div>
-
-        <div class="proj-card__screen">
-          <!-- Para usar um print real, troque a div .pv abaixo por:
-               <img src="projetos/benicio.jpg" alt="Site do Benício Advogados"> -->
-          <div class="pv" style="--pv-bg:#1B3A2D; --pv-ink:#F2EDE3; --pv-accent:#C9A84C; --pv-cta:#C9A84C; --pv-cta-ink:#1B3A2D; --pv-radius:2px; --pv-font:'Cormorant Garamond',Georgia,serif; --pv-body:'Jost',sans-serif" aria-hidden="true">
-
-            <div class="pv__nav">
-              <span class="pv__brand">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M5 8 2 15h6L5 8Z"/><path d="M19 8l-3 7h6l-3-7Z"/></svg>
-                <span>
-                  <b>Benício</b>
-                  <i>Advogados</i>
-                </span>
-              </span>
-              <span class="pv__menu">
-                <i>Sobre</i><i>Serviços</i><i>Diferenciais</i><i>FAQ</i>
-              </span>
-              <span class="pv__pill">Falar com o Escritório</span>
-            </div>
-
-            <div class="pv__hero">
-              <div class="pv__main">
-                <span class="pv__eyebrow">Direito Criminal · Direito Imobiliário</span>
-                <h4 class="pv__title">A solidez que o seu <span>patrimônio</span> exige. A prontidão que a sua <span>liberdade</span> precisa.</h4>
-                <p class="pv__text">Atuação altamente especializada. De Petrolina e Vale do São Francisco para todo o Brasil.</p>
-                <div class="pv__btns">
-                  <span class="pv__btn pv__btn--solid">Acionar Plantão Criminal 24h</span>
-                  <span class="pv__btn pv__btn--line">Falar com Especialista Imobiliário</span>
-                </div>
-                <ul class="pv__trust">
-                  <li><b>★★★★★</b> 5.0 no Google</li>
-                  <li>Atuação em todo o Brasil</li>
-                  <li>Plantão 24h, 7 dias por semana</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="proj-card__body">
-          <div class="proj-card__tags">
-            <span class="proj-tag">Pacote Autoridade</span>
-            <span class="proj-tag">Copy completo</span>
-            <span class="proj-tag">SEO técnico</span>
-          </div>
-          <h3>Benício Advogados</h3>
-          <span class="proj-card__seg">Advocacia criminal e imobiliária · Petrolina-PE</span>
-          <p class="proj-card__desc">Dois públicos com urgências opostas no mesmo site. A página separa os caminhos no primeiro clique e manda cada visitante para o advogado certo, com a mensagem já escrita.</p>
-          <span class="proj-card__go">
-            Visitar o site no ar
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-          </span>
-        </div>
-      </a>
-      <!-- =============== FIM DO PROJETO 1 =============== -->
-
-      <!-- ================= PROJETO 2 ================= -->
-      <!-- ATENCAO: troque o href e o texto da barra de endereco pelo dominio real -->
-      <a class="proj-card"
-         href="https://drluiseduardorodrigues.com.br/"
+         href="https://drluiseduardo.vercel.app"
          target="_blank" rel="noopener noreferrer"
          aria-label="Abrir o site do Dr. Luis Eduardo Rodrigues de Melo em uma nova aba">
 
@@ -1091,7 +1066,7 @@ p{margin:0}
           <span class="browser__dots"><i></i><i></i><i></i></span>
           <span class="browser__url">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            drluiseduardorodrigues.com.br
+            drluiseduardo.vercel.app
           </span>
           <span class="browser__live"><i></i><span>No ar</span></span>
         </div>
@@ -1111,6 +1086,44 @@ p{margin:0}
           <h3>Dr. Luis Eduardo Rodrigues de Melo</h3>
           <span class="proj-card__seg">Advocacia previdenciária · INSS · Petrolina-PE</span>
           <p class="proj-card__desc">Público que abre a internet pelo celular e desiste na primeira palavra difícil. Página sem “advoguês”, organizada por situação, para a pessoa se reconhecer em dois segundos.</p>
+          <span class="proj-card__go">
+            Visitar o site no ar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      <!-- =============== FIM DO PROJETO 1 =============== -->
+
+      <!-- ================= PROJETO 2 ================= -->
+      <a class="proj-card"
+         href="https://drallyssonbenicio.vercel.app/"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Abrir o site do Benício Advogados em uma nova aba">
+
+        <div class="browser" aria-hidden="true">
+          <span class="browser__dots"><i></i><i></i><i></i></span>
+          <span class="browser__url">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            drallyssonbenicio.vercel.app
+          </span>
+          <span class="browser__live"><i></i><span>No ar</span></span>
+        </div>
+
+        <div class="proj-card__screen">
+          <img src="assets/img/projeto-allyson-desktop.png"
+               width="1551" height="947" loading="lazy"
+               alt="Site do escritório Benício Advogados na versão desktop">
+        </div>
+
+        <div class="proj-card__body">
+          <div class="proj-card__tags">
+            <span class="proj-tag">Pacote Autoridade</span>
+            <span class="proj-tag">Copy completo</span>
+            <span class="proj-tag">SEO técnico</span>
+          </div>
+          <h3>Benício Advogados</h3>
+          <span class="proj-card__seg">Advocacia criminal e imobiliária · Petrolina-PE</span>
+          <p class="proj-card__desc">Dois públicos com urgências opostas no mesmo site. A página separa os caminhos no primeiro clique e manda cada visitante para o advogado certo, com a mensagem já escrita.</p>
           <span class="proj-card__go">
             Visitar o site no ar
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
@@ -1322,11 +1335,11 @@ p{margin:0}
         <p class="plan__pay">ou até 2x no cartão*</p>
 
         <ul class="plan__list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Landing page de página única (até 4 seções)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Design responsivo (celular e PC)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Botão flutuante de WhatsApp</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Publicação e hospedagem inclusas</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> SEO básico</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Landing page de página única (até 4 seções)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Design responsivo (celular e PC)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Botão flutuante de WhatsApp</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Publicação e hospedagem inclusas</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>SEO básico</span></li>
         </ul>
 
         <dl class="plan__meta">
@@ -1347,12 +1360,12 @@ p{margin:0}
         <p class="plan__pay">ou até 6x no cartão*</p>
 
         <ul class="plan__list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Tudo do pacote Presença</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Página mais robusta (6 a 8 seções)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Mensagem pré-preenchida por serviço</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Otimização de velocidade</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Revisão e ajuste dos seus textos</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> 15 dias de suporte pós-entrega</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Tudo do pacote Presença</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Página mais robusta (6 a 8 seções)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Mensagem pré-preenchida por serviço</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Otimização de velocidade</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Revisão e ajuste dos seus textos</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>15 dias de suporte pós-entrega</span></li>
         </ul>
 
         <dl class="plan__meta">
@@ -1375,12 +1388,12 @@ p{margin:0}
         <p class="plan__pay">ou até 12x no cartão*</p>
 
         <ul class="plan__list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Tudo do pacote Conversão</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Página completa (8 a 12 seções)</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Copywriting completo: eu escrevo todos os textos</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Pixel do Meta e Google Analytics configurados</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> Cadastro no Google Meu Negócio**</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> 30 dias de suporte + 1º mês de manutenção</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Tudo do pacote Conversão</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Página completa (8 a 12 seções)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Copywriting completo: eu escrevo todos os textos</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Pixel do Meta e Google Analytics configurados</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Cadastro no Google Meu Negócio**</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>30 dias de suporte + 1º mês do plano de cuidado</span></li>
         </ul>
 
         <dl class="plan__meta">
@@ -1402,50 +1415,37 @@ p{margin:0}
 </section>
 
 <!-- =========================================================
-     7. TRANSPARÊNCIA  (substitui os depoimentos até você ter os reais)
-     =========================================================
-     QUANDO TIVER DEPOIMENTOS REAIS: o bloco original de depoimentos
-     está guardado, comentado, logo abaixo desta seção. Basta reativar
-     e trocar os textos pelas frases verdadeiras dos seus clientes.
-     ========================================================= -->
-<section class="section">
-  <div class="container">
-    <div class="section-head section-head--center reveal">
-      <h2>Estou começando agora. Para você, isso é uma vantagem.</h2>
-      <p class="lead">Não vou inventar dezenas de clientes que eu não tenho. Prefiro te contar exatamente o que você ganha contratando alguém no início da caminhada.</p>
-    </div>
-
-    <div class="safe safe--navy">
-      <article class="safe__card reveal">
-        <span class="safe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z"/></svg></span>
-        <h3>Você fala direto comigo</h3>
-        <p>Sem agência, sem atendente, sem número de protocolo. Quem responde o seu WhatsApp é quem está escrevendo e construindo a sua página.</p>
-      </article>
-
-      <article class="safe__card reveal" data-d="1">
-        <span class="safe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-        <h3>Seu projeto não entra em fila</h3>
-        <p>Trabalho com poucos projetos ao mesmo tempo, de propósito. É por isso que o prazo de 3 dias úteis é real e não uma promessa de vendas.</p>
-      </article>
-
-      <article class="safe__card reveal" data-d="2">
-        <span class="safe__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.4 6.8 19.2l1-5.9L3.5 9.2l5.9-.8L12 3Z"/></svg></span>
-        <h3>Meu portfólio depende de você</h3>
-        <p>Cada site que eu entrego agora é o que vai me trazer o próximo cliente. Ninguém tem mais interesse no resultado do seu projeto do que eu.</p>
-      </article>
-    </div>
-
-    <p class="safe__foot reveal">A prova que eu tenho hoje são os projetos no ar. <a href="#projetos" style="color:var(--navy); font-weight:600">Clique neles e navegue por dentro</a>: domínio próprio, página completa e o WhatsApp funcionando de verdade.</p>
-  </div>
-</section>
-
-<!-- =========================================================
      DEPOIMENTOS — GUARDADO PARA QUANDO VOCÊ TIVER OS REAIS
-     Para ativar: apague a linha de abertura deste comentário e a
-     linha de fechamento no fim do bloco, e troque as frases e os
-     nomes pelos depoimentos verdadeiros dos seus clientes.
+
+     PARA ATIVAR:
+     1. Apague a linha de abertura deste comentário e a linha de
+        fechamento no final do bloco.
+     2. Troque as iniciais do .quote__avatar pelas iniciais reais
+        do cliente, e as frases/nomes/profissões pelas verdadeiras.
+     3. Apague os <figure> que sobrarem, se houver menos de três
+        depoimentos (o grid se ajusta sozinho a 1, 2 ou 3 cards).
+     4. REMOVA a tira "E estou começando agora, o que trabalha a
+        seu favor" da seção id="sobre" (classe .about__soon). As
+        duas resolvem a mesma objeção (falta de prova social) e
+        manter as duas juntas fica redundante e defensivo.
+     5. ATENÇÃO À ALTERNÂNCIA DE FUNDOS: esta seção entra entre
+        "planos" (cinza) e "sobre". Por isso ela já está com
+        classe "section" (fundo branco) abaixo. Mas isso empurra
+        a alternância de TODAS as seções seguintes: inverta
+        section--gray em "sobre", "faq" e "cuidado" (quem é
+        cinza vira branco e vice-versa) e confira de cima a baixo
+        depois de ativar, para nunca haver dois fundos iguais
+        em sequência.
+
+     COMO COLETAR UM DEPOIMENTO QUE PRESTA:
+     Peça um áudio no WhatsApp com estas três perguntas:
+       1. O que te fez decidir fazer o site?
+       2. Qual foi a sua maior dúvida ou medo antes de contratar?
+       3. O que mudou depois que o site entrou no ar?
+     Peça também autorização explícita do cliente para usar nome,
+     profissão e foto na página antes de publicar.
      =========================================================
-<section class="section section--gray">
+<section class="section">
   <div class="container">
     <div class="section-head section-head--center reveal">
       <span class="kicker">Prova social</span>
@@ -1476,6 +1476,18 @@ p{margin:0}
           </span>
         </footer>
       </figure>
+
+      <figure class="quote reveal" data-d="2">
+        <span class="quote__mark" aria-hidden="true">&rdquo;</span>
+        <blockquote><p>Frase real do seu cliente aqui.</p></blockquote>
+        <footer>
+          <span class="quote__avatar" aria-hidden="true">XX</span>
+          <span>
+            <cite>Nome do cliente</cite>
+            <small>Profissão</small>
+          </span>
+        </footer>
+      </figure>
     </div>
   </div>
 </section>
@@ -1484,7 +1496,7 @@ p{margin:0}
 <!-- =========================================================
      7. SOBRE
      ========================================================= -->
-<section class="section section--gray" id="sobre">
+<section class="section" id="sobre">
   <div class="container about">
     <div class="about__media reveal">
       <div class="about__photo">
@@ -1516,6 +1528,18 @@ p{margin:0}
         <p class="journey__note">Atuo em atendimento remoto desde 2018, com experiência comprovada em vendas B2C. Todo esse tempo do outro lado da conversa me mostrou as perguntas que todo cliente faz antes de fechar, as principais objeções que travam a venda e o ponto em que a pessoa esfria e desiste. Escrevo a sua página para responder tudo isso antes que o cliente precise perguntar, para que ele chegue no seu WhatsApp já decidido.</p>
       </div>
 
+      <!-- REMOVER esta tira (.about__soon) quando a seção de depoimentos
+           reais for reativada: ela existe só enquanto não há prova social,
+           e vem depois dos argumentos de competência acima de propósito. -->
+      <div class="about__soon reveal">
+        <strong>E estou começando agora, o que trabalha a seu favor:</strong>
+        <ul>
+          <li><strong>Você fala direto comigo.</strong> Sem agência, sem atendente, sem número de protocolo.</li>
+          <li><strong>Seu projeto não entra em fila.</strong> Poucos projetos ao mesmo tempo, de propósito. É por isso que o prazo de 3 dias é real.</li>
+          <li><strong>Meu portfólio depende de você.</strong> Cada site que eu entrego agora é o que traz o próximo cliente.</li>
+        </ul>
+      </div>
+
       <a class="btn btn--wa js-wa" href="#" data-msg="Olá, Daniel! Vi seu site e queria conversar sobre o meu projeto.">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2"/></svg>
         Falar com o Daniel
@@ -1527,7 +1551,7 @@ p{margin:0}
 <!-- =========================================================
      8. FAQ
      ========================================================= -->
-<section class="section" id="faq">
+<section class="section section--gray" id="faq">
   <div class="container">
     <div class="section-head section-head--center reveal">
       <h2>Perguntas que sempre me fazem</h2>
@@ -1554,7 +1578,9 @@ p{margin:0}
           </button>
         </h3>
         <div class="faq__a" id="faq-2" role="region">
-          <div>A publicação e a hospedagem do primeiro ano estão inclusas, e não existe mensalidade obrigatória. Depois disso você escolhe: cuidar por conta própria, contratar a <strong>Renovação Assistida por R$ 197/ano</strong> (R$ 40 do domínio + R$ 157 de serviço, com revisão técnica e 3 atualizações de texto, preço ou foto durante o ano) ou o plano de manutenção mensal a partir de R$ 89. Se não quiser nenhum, seu site continua no ar.</div>
+          <div>A publicação e o primeiro ano de hospedagem estão inclusos, e não existe mensalidade obrigatória. O site é seu.
+          <br><br>
+          Depois disso você escolhe: assinar o plano de cuidado por R$ 49/mês, em que eu cuido de tudo e faço as suas alterações, ou seguir por conta própria, renovando o domínio direto no registrador por cerca de R$ 40 por ano. <a href="#cuidado" style="color:var(--navy); font-weight:600">Veja a comparação dos dois caminhos</a>.</div>
         </div>
       </div>
 
@@ -1573,14 +1599,77 @@ p{margin:0}
       <div class="faq__item">
         <h3>
           <button class="faq__q" aria-expanded="false" aria-controls="faq-4">
-            E se eu quiser adicionar mais coisas depois?
+            O que é o Google Meu Negócio e por que isso importa?
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="faq__a" id="faq-4" role="region">
-          <div>Trabalhamos com total transparência. É possível adicionar seções extras, adequação à LGPD, Analytics e outros itens como serviços adicionais, conforme a sua necessidade cresce.</div>
+          <div>É o cadastro que faz o seu negócio aparecer no <strong>mapa do Google</strong>. Quando alguém da sua cidade pesquisa “advogado previdenciário” ou “dentista perto de mim”, os primeiros resultados não são sites: é o mapa, com nome, endereço, telefone, horário e as avaliações de cada um.
+          <br><br>
+          Sem esse cadastro você simplesmente não está nessa lista, mesmo tendo um site ótimo. Com ele, quem pesquisa te encontra, vê que você abre agora, lê as avaliações e liga ou traça a rota em um toque. É onde muita gente decide antes de abrir qualquer site.
+          <br><br>
+          No pacote Autoridade eu faço esse cadastro para você, incluindo categoria, área de atendimento, horários, fotos e a ligação com o seu site. O prazo de ativação depende da verificação do Google e não afeta a entrega da página.</div>
         </div>
       </div>
+
+      <div class="faq__item">
+        <h3>
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-5">
+            E se eu quiser adicionar mais coisas depois?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__a" id="faq-5" role="region">
+          <div>Trabalhamos com total transparência. É possível adicionar seções extras, adequação à LGPD, integração com agenda e outros itens como serviços adicionais, conforme a sua necessidade cresce. Se você contratou um pacote menor e depois quiser subir, eu cobro só a diferença.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     9. O SITE É SEU, COM PLANO OU SEM PLANO
+     ========================================================= -->
+<section class="section" id="cuidado">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <h2>O site é seu, com plano ou sem plano.</h2>
+      <p class="lead">Não existe assinatura obrigatória e não existe contrato de fidelidade. Você decide depois da entrega e pode mudar de ideia quando quiser.</p>
+    </div>
+
+    <div class="care">
+      <article class="care__card care__card--navy reveal">
+        <span class="care__label">Com o plano de cuidado</span>
+        <h3>Você não pensa mais nisso</h3>
+        <p class="care__price">R$ 49 por mês</p>
+        <ul class="care__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Eu renovo o domínio e cuido da hospedagem. Você não precisa lembrar de nada.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Até <strong>4 pedidos de alteração por mês</strong>: texto, preço, foto, horário e contato.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Você me chama no WhatsApp e tem <strong>prioridade no atendimento</strong>: quem assina o plano entra na frente da fila.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Revisão técnica periódica, para a página continuar rápida.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Pedidos simples costumam sair no mesmo dia ou no dia seguinte.</span></li>
+        </ul>
+        <p class="care__foot">Um pedido é uma mensagem com o que mudar, resolvida de uma vez, não importa quantos itens tenha. Fora do plano: seção nova, página nova, redesenho e projeto novo, que são orçados à parte.</p>
+      </article>
+
+      <article class="care__card reveal" data-d="1">
+        <span class="care__label">Sem plano nenhum</span>
+        <h3>O que continua sendo seu</h3>
+        <p class="care__price">Sem custo comigo</p>
+        <ul class="care__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>O site continua no ar e continua seu.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>O domínio segue registrado no seu CPF ou CNPJ, no seu nome.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Eu te entrego os arquivos. Nada fica preso comigo.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Você renova o domínio direto no registrador, cerca de R$ 40 por ano.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Pode me chamar para alterações avulsas, cobradas por serviço.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Pode ativar o plano depois, a qualquer momento.</span></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="care-note reveal">
+      <h3>Depois de um ano, eu procuro você</h3>
+      <p>Com plano ou sem plano, passado um ano eu reviso a sua página e te conto o que envelheceu, o que dá para melhorar e se vale a pena um projeto novo. Sem custo e sem compromisso: se estiver tudo bem, eu digo que está tudo bem.</p>
     </div>
   </div>
 </section>

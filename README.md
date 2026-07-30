@@ -35,7 +35,7 @@ npx serve
     │   ├── daniel-cruz-fechado.jpg   corte alternativo, mais aproximado
     │   ├── daniel-cruz.webp          mesma foto, formato leve
     │   ├── projeto-luis-desktop.webp print do projeto no card
-    │   └── projeto-luis-mobile.webp  print do projeto no celular do hero
+    │   └── projeto-allysson-mobile2.png print do escritório Benício no celular do hero
     ├── logo/
     │   ├── dc-simbolo.svg            símbolo (em uso no cabeçalho)
     │   ├── dc-simbolo-branco.svg     fundo escuro
@@ -68,17 +68,19 @@ Procure por `SEU-DOMINIO` em `robots.txt` e `sitemap.xml` e substitua.
 ### 3. Domínios dos projetos
 Os dois cards da seção **Projetos** apontam para:
 
-- `https://advogadosbenicio.com.br/`
-- `https://drluiseduardorodrigues.com.br/`
+- `https://drluiseduardo.vercel.app` (Dr. Luis Eduardo, 1º card)
+- `https://drallyssonbenicio.vercel.app/` (Benício Advogados, 2º card)
 
 Confirme que os dois estão no ar antes de publicar, porque a página anuncia
 os dois como "No ar" e o visitante vai clicar.
 
 ### 4. Depoimentos reais
 A seção de depoimentos está **guardada comentada** no HTML (procure por
-`DEPOIMENTOS — GUARDADO PARA QUANDO VOCÊ TIVER OS REAIS`). No lugar dela
-existe hoje a seção "Estou começando agora", que é honesta e funciona.
-Quando tiver as frases verdadeiras, reative o bloco e troque a outra.
+`DEPOIMENTOS — GUARDADO PARA QUANDO VOCÊ TIVER OS REAIS`), já pronta para
+ativar: o grid se adapta sozinho a 1, 2 ou 3 depoimentos. Quando tiver as
+frases verdadeiras, siga as instruções no próprio comentário — isso inclui
+remover a tira "E estou começando agora" da seção "Sobre" (`.about__soon`)
+e reconferir a alternância de fundos branco/cinza das seções abaixo.
 
 ### 5. Garantia
 A seção "Como eu tiro o risco da sua mão" promete 50/50, aprovação antes
