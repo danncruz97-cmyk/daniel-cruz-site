@@ -92,8 +92,8 @@ h1,h2,h3,h4{
   margin:0;
   font-weight:800;
 }
-h1{font-size:clamp(2.1rem, 5vw, 3.4rem)}
-h2{font-size:clamp(1.7rem, 3.5vw, 2.5rem)}
+h1{font-size:clamp(2.1rem, 5vw, 4.2rem); letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem, 3.5vw, 3rem); letter-spacing:-.03em}
 h3{font-size:1.18rem; letter-spacing:-.015em}
 p{margin:0}
 
@@ -153,6 +153,15 @@ p{margin:0}
 
 :focus-visible{outline:3px solid var(--navy); outline-offset:3px; border-radius:6px}
 .btn--wa:focus-visible{outline-color:#0B5C2E}
+
+/* ============================================================
+   BARRA DE PROGRESSO DE LEITURA
+   ============================================================ */
+.progress-bar{
+  position:fixed; top:0; left:0; z-index:100; width:0%; height:3px;
+  background:var(--navy); pointer-events:none;
+  transition:width .12s linear;
+}
 
 /* ============================================================
    HEADER
@@ -261,25 +270,25 @@ p{margin:0}
 .wa-badge__live i{width:6px; height:6px; border-radius:50%; background:var(--wa); animation:pulse 2.2s ease-in-out infinite}
 
 /* ============================================================
-   DORES
+   DORES → HOJE / DEPOIS (coluna única, sem grid, sem cards)
    ============================================================ */
-.pains{display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,5vw,64px); align-items:center}
-.pain-list{margin:0; padding:0; display:grid; gap:14px}
-.pain-list li{
-  list-style:none; display:flex; gap:15px; align-items:flex-start;
-  background:#fff; border:1px solid var(--line); border-radius:var(--r-md);
-  padding:19px 21px; box-shadow:var(--shadow-sm);
-  transition:transform .2s ease, box-shadow .2s ease;
+.pains{display:flex; flex-direction:column}
+.pains .section-head{margin-bottom:clamp(36px,5vw,54px); max-width:720px}
+
+.pain-blocks{max-width:720px; margin:0 auto}
+.pain-block{border-left:2px solid var(--navy); padding-left:28px}
+.pain-block + .pain-block{margin-top:56px}
+.pain-block__label{
+  display:block; font-size:.72rem; font-weight:700; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px;
 }
-.pain-list li:hover{transform:translateX(4px); box-shadow:var(--shadow-md)}
-.pain-list__icon{
-  width:34px; height:34px; flex:0 0 auto; border-radius:10px;
-  background:#FEF2F2; color:#DC2626; display:grid; place-items:center;
+.pain-block__problem{font-size:1.05rem; font-weight:400; color:var(--ink-soft); line-height:1.6; margin:0 0 22px}
+.pain-block__solution{
+  font-family:var(--ff-display); font-size:clamp(1.5rem,3vw,2.1rem); font-weight:800;
+  color:var(--navy); letter-spacing:-.025em; line-height:1.2; text-transform:none; margin:0 0 10px;
 }
-.pain-list__icon svg{width:19px; height:19px}
-.pain-list strong{display:block; font-family:var(--ff-display); font-size:1.02rem; letter-spacing:-.015em; margin-bottom:2px}
-.pain-list p{font-size:.93rem; color:var(--ink-soft); line-height:1.55}
-.pains__cta{margin-top:32px}
+.pain-block__support{font-size:1rem; color:var(--ink-soft); line-height:1.6; margin:0}
+.pains__cta{margin-top:clamp(36px,4vw,48px); text-align:center}
 
 /* ============================================================
    PROJETOS (carrossel)
@@ -287,7 +296,15 @@ p{margin:0}
 .section--tint{
   background:linear-gradient(180deg,#F3F7FF 0%, #FAFCFF 100%);
   border-top:1px solid #E1EAFB; border-bottom:1px solid #E1EAFB;
+  position:relative; overflow:hidden;
 }
+/* textura sutil de pontos, cor --navy em opacidade muito baixa */
+.section--tint::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:radial-gradient(rgba(30,58,138,.06) 1px, transparent 1px);
+  background-size:24px 24px;
+}
+.section--tint .proj{position:relative; z-index:1}
 
 .proj__head{display:flex; align-items:flex-end; justify-content:space-between; gap:28px; margin-bottom:clamp(30px,4vw,46px)}
 .proj__head .section-head{margin-bottom:0}
@@ -477,6 +494,10 @@ p{margin:0}
 .proj__dot:hover{background:#93AEE0}
 .proj__dot.is-active{width:28px; background:var(--navy)}
 
+.proj__more{max-width:600px; margin:clamp(40px,5vw,58px) auto 0; text-align:center}
+.proj__more h3{font-size:1.28rem; color:var(--navy); margin-bottom:12px}
+.proj__more p{font-size:.96rem; color:var(--ink-soft); line-height:1.65}
+
 .proj__cta{text-align:center; margin-top:34px}
 .proj__cta p{font-size:.94rem; color:var(--ink-soft); margin-bottom:18px}
 
@@ -635,6 +656,27 @@ p{margin:0}
   margin-top:26px; text-align:center; font-size:.9rem; color:var(--ink-soft);
   background:#fff; border:1px dashed #C9D6F2; border-radius:var(--r-md); padding:18px 22px;
 }
+
+/* seção de segurança em fundo marinho cheio, mesmo tratamento do rodapé */
+.section--navy{background:var(--navy); color:#fff; position:relative; overflow:hidden}
+.section--navy::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(620px 380px at 82% 8%, rgba(37,211,102,.16), transparent 70%);
+}
+.section--navy .container{position:relative; z-index:1}
+.section--navy h2{color:#fff}
+.section--navy .lead{color:rgba(255,255,255,.78)}
+.section--navy :focus-visible{outline-color:#fff}
+.section--navy .safe__card{
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); box-shadow:none;
+}
+.section--navy .safe__card h3{color:#fff}
+.section--navy .safe__card p{color:rgba(255,255,255,.82)}
+.section--navy .safe__icon{background:rgba(255,255,255,.14); color:#fff}
+.section--navy .safe__foot{
+  background:rgba(255,255,255,.08); border:1px dashed rgba(255,255,255,.3); color:rgba(255,255,255,.82);
+}
+.section--navy .safe__foot strong{color:#fff; font-weight:800}
 
 /* ============================================================
    DEPOIMENTOS
@@ -850,7 +892,7 @@ p{margin:0}
   .fit{grid-template-columns:1fr}
   .proj__head{flex-direction:column; align-items:flex-start; gap:22px}
   .proj__nav{padding-bottom:0}
-  .hero__grid,.pains,.about,.quotes{grid-template-columns:1fr}
+  .hero__grid,.about,.quotes{grid-template-columns:1fr}
   .hero__grid{gap:48px}
   .mock{order:2}
   .about__media{max-width:360px; margin:0 auto}
@@ -885,10 +927,13 @@ p{margin:0}
   *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
   .reveal{opacity:1; transform:none}
   .wa-toast,.wa-badge{opacity:1; transform:none}
+  .progress-bar{transition:none}
 }
 </style>
 </head>
 <body>
+
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
 <!-- =========================================================
      HEADER
@@ -1005,40 +1050,40 @@ p{margin:0}
      ========================================================= -->
 <section class="section section--gray">
   <div class="container pains">
-    <div class="reveal">
+    <div class="section-head reveal">
       <h2>Você atende com excelência, mas a sua presença na internet diz o contrário?</h2>
       <p class="lead" style="margin-top:18px">Dentista, advogada, nutricionista, esteticista, professor de curso: todos os dias bons profissionais perdem cliente porque não passam no primeiro contato a confiança que passam no atendimento.</p>
-      <div class="pains__cta">
-        <a class="btn btn--wa js-wa" href="#" data-msg="Olá, Daniel! Quero transmitir mais credibilidade na internet. Como você pode me ajudar?">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.02c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.24c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.7 8.23 8.23s-3.7 8.24-8.23 8.24"/></svg>
-          Quero transmitir mais credibilidade
-        </a>
+    </div>
+
+    <div class="pain-blocks reveal" data-d="2">
+      <div class="pain-block">
+        <span class="pain-block__label">Hoje</span>
+        <p class="pain-block__problem">Se a rede social cai ou o alcance despenca, o seu negócio some junto.</p>
+        <p class="pain-block__solution">Um endereço que é seu.</p>
+        <p class="pain-block__support">Seu link funciona sempre, não depende de rede nenhuma, e ninguém pode tirar do ar.</p>
+      </div>
+
+      <div class="pain-block">
+        <span class="pain-block__label">Hoje</span>
+        <p class="pain-block__problem">Preço, endereço, horário e formas de pagamento: as mesmas perguntas todos os dias no WhatsApp.</p>
+        <p class="pain-block__solution">A página responde primeiro.</p>
+        <p class="pain-block__support">O cliente chega no seu WhatsApp já sabendo o preço e o horário, e a conversa começa no ponto certo.</p>
+      </div>
+
+      <div class="pain-block">
+        <span class="pain-block__label">Hoje</span>
+        <p class="pain-block__problem">Sem percepção de valor, o cliente coloca você e a concorrência na mesma prateleira.</p>
+        <p class="pain-block__solution">Comparado pelo trabalho.</p>
+        <p class="pain-block__support">Quem lê a sua página entende o que você entrega antes de perguntar quanto custa.</p>
       </div>
     </div>
 
-    <ul class="pain-list reveal" data-d="2">
-      <li>
-        <span class="pain-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
-        <div>
-          <strong>Dependência total do algoritmo</strong>
-          <p>Se a rede social cai ou o alcance despenca, o seu negócio some da internet junto.</p>
-        </div>
-      </li>
-      <li>
-        <span class="pain-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-        <div>
-          <strong>Tempo perdido repetindo o básico</strong>
-          <p>Preço, endereço, horário, formas de pagamento: as mesmas perguntas todos os dias no WhatsApp.</p>
-        </div>
-      </li>
-      <li>
-        <span class="pain-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="m7 12h10"/><path d="M10 18h4"/></svg></span>
-        <div>
-          <strong>Comparado só pelo preço</strong>
-          <p>Sem percepção de valor, o cliente coloca você e a concorrência na mesma prateleira.</p>
-        </div>
-      </li>
-    </ul>
+    <div class="pains__cta reveal">
+      <a class="btn btn--wa js-wa" href="#" data-msg="Olá, Daniel! Quero transmitir mais credibilidade na internet. Como você pode me ajudar?">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.02c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.24c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.7 8.23 8.23s-3.7 8.24-8.23 8.24"/></svg>
+        Quero transmitir mais credibilidade
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1073,7 +1118,7 @@ p{margin:0}
 
       <!-- ================= PROJETO 1 ================= -->
       <a class="proj-card"
-         href="https://drluiseduardo.vercel.app"
+         href="https://www.luiseduardoadv.com.br/"
          target="_blank" rel="noopener noreferrer"
          aria-label="Abrir o site do Dr. Luis Eduardo Rodrigues de Melo em uma nova aba">
 
@@ -1081,7 +1126,7 @@ p{margin:0}
           <span class="browser__dots"><i></i><i></i><i></i></span>
           <span class="browser__url">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            drluiseduardo.vercel.app
+            luiseduardoadv.com.br
           </span>
           <span class="browser__live"><i></i><span>No ar</span></span>
         </div>
@@ -1190,6 +1235,11 @@ p{margin:0}
 
     <div class="proj__dots" aria-label="Selecionar projeto"></div>
 
+    <div class="proj__more reveal">
+      <h3>Seu segmento não está aqui? Sem problema.</h3>
+      <p>Advocacia e saúde são só os primeiros. Se você vende serviço e fecha pelo WhatsApp, seja gráfica, oficina, loja, buffet ou academia, a estrutura é a mesma. Me conta o que você faz.</p>
+    </div>
+
     <div class="proj__cta reveal">
       <p>Quer ver o seu negócio com esse nível de apresentação?</p>
       <a class="btn btn--wa js-wa" href="#" data-msg="Olá, Daniel! Vi os seus projetos no site e quero um assim para o meu negócio.">
@@ -1265,7 +1315,7 @@ p{margin:0}
 <section class="section section--gray" id="processo">
   <div class="container">
     <div class="section-head section-head--center reveal">
-      <span class="kicker">Quatro etapas</span>
+      <span class="counter"><b>4</b><span>Quatro etapas</span></span>
       <h2>Como funciona o projeto?</h2>
       <p class="lead">Quatro etapas claras, do primeiro “oi” até o site no ar. Você sabe exatamente onde estamos em cada momento.</p>
     </div>
@@ -1298,7 +1348,7 @@ p{margin:0}
 <!-- =========================================================
      5. REDUÇÃO DE RISCO (antes do preço, de propósito)
      ========================================================= -->
-<section class="section" id="seguranca">
+<section class="section section--navy" id="seguranca">
   <div class="container">
     <div class="section-head section-head--center reveal">
       <h2>Como eu tiro o risco da sua mão?</h2>
@@ -1325,7 +1375,7 @@ p{margin:0}
       </article>
     </div>
 
-    <p class="safe__foot reveal">E o seu tempo? Custa cerca de <strong>40 minutos no total</strong>: uma conversa para eu entender o seu serviço, o envio das suas fotos e logo, e a sua aprovação no final. O resto é comigo.</p>
+    <p class="safe__foot reveal">E o seu tempo? Custa cerca de <strong>40 minutos</strong> no total: uma conversa para eu entender o seu serviço, o envio das suas fotos e logo, e a sua aprovação no final. O resto é comigo.</p>
   </div>
 </section>
 
@@ -1767,6 +1817,29 @@ const WHATSAPP_NUMERO = '5574981301345';
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* ---- barra de progresso de leitura ---- */
+  const progressBar = document.getElementById('progressBar');
+
+  function updateProgress() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+
+  let progressTicking = false;
+  window.addEventListener('scroll', function () {
+    if (!progressTicking) {
+      requestAnimationFrame(function () {
+        updateProgress();
+        progressTicking = false;
+      });
+      progressTicking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
 
   /* ---- menu mobile ---- */
   const burger = document.getElementById('burger');
