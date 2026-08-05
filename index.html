@@ -296,6 +296,7 @@ p{margin:0}
 .section--tint{
   background:linear-gradient(180deg,#F3F7FF 0%, #FAFCFF 100%);
   border-top:1px solid #E1EAFB; border-bottom:1px solid #E1EAFB;
+  padding:clamp(52px, 6vw, 84px) 0;
   position:relative; overflow:hidden;
 }
 /* textura sutil de pontos, cor --navy em opacidade muito baixa */
@@ -327,7 +328,7 @@ p{margin:0}
 .proj__track::-webkit-scrollbar{display:none}
 
 .proj-card{
-  flex:0 0 calc(58% - 12px); scroll-snap-align:start;
+  flex:0 0 calc(44% - 12px); scroll-snap-align:start;
   display:flex; flex-direction:column; text-decoration:none; color:inherit;
   background:#fff; border:1px solid var(--line); border-radius:var(--r-lg);
   overflow:hidden; box-shadow:var(--shadow-sm);
@@ -494,7 +495,7 @@ p{margin:0}
 .proj-card--cta .proj-card__desc{color:rgba(255,255,255,.82); flex:none; max-width:34ch}
 .proj-card--cta .btn{width:100%}
 
-.proj__dots{display:flex; justify-content:center; align-items:center; gap:8px; margin-top:30px}
+.proj__dots{display:flex; justify-content:center; align-items:center; gap:8px; margin-top:22px}
 .proj__dot{
   width:9px; height:9px; padding:0; border:0; border-radius:var(--r-full);
   background:#C3D2EF; cursor:pointer; transition:width .25s ease, background-color .25s ease;
@@ -502,11 +503,11 @@ p{margin:0}
 .proj__dot:hover{background:#93AEE0}
 .proj__dot.is-active{width:28px; background:var(--navy)}
 
-.proj__more{max-width:600px; margin:clamp(40px,5vw,58px) auto 0; text-align:center}
+.proj__more{max-width:600px; margin:clamp(28px,3.5vw,42px) auto 0; text-align:center}
 .proj__more h3{font-size:1.28rem; color:var(--navy); margin-bottom:12px}
 .proj__more p{font-size:.96rem; color:var(--ink-soft); line-height:1.65}
 
-.proj__cta{text-align:center; margin-top:34px}
+.proj__cta{text-align:center; margin-top:26px}
 .proj__cta p{font-size:.94rem; color:var(--ink-soft); margin-bottom:18px}
 
 /* 1 projeto: vira card único centralizado, sem controles */
