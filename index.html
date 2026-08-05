@@ -486,6 +486,14 @@ p{margin:0}
 .proj-card__go svg{width:17px; height:17px; transition:transform .2s ease}
 .proj-card:hover .proj-card__go svg{transform:translateX(4px)}
 
+/* card de chamada (não é projeto): mesmo tamanho, fundo navy cheio */
+.proj-card--cta{background:var(--navy); border-color:var(--navy)}
+.proj-card--cta:hover{border-color:var(--navy)}
+.proj-card--cta .proj-card__body{justify-content:center; align-items:center; text-align:center; gap:18px; flex:1}
+.proj-card--cta h3{color:#fff; margin-bottom:0}
+.proj-card--cta .proj-card__desc{color:rgba(255,255,255,.82); flex:none; max-width:34ch}
+.proj-card--cta .btn{width:100%}
+
 .proj__dots{display:flex; justify-content:center; align-items:center; gap:8px; margin-top:30px}
 .proj__dot{
   width:9px; height:9px; padding:0; border:0; border-radius:var(--r-full);
@@ -652,9 +660,19 @@ p{margin:0}
 .safe__card h3{margin-bottom:9px; font-size:1.1rem}
 .safe__card p{font-size:.94rem; color:var(--ink-soft); line-height:1.6}
 .safe--navy .safe__icon{background:var(--navy-tint); color:var(--navy)}
-.safe__foot{
-  margin-top:26px; text-align:center; font-size:.9rem; color:var(--ink-soft);
-  background:#fff; border:1px dashed #C9D6F2; border-radius:var(--r-md); padding:18px 22px;
+/* ---------- faixa "em números" ---------- */
+.stats-strip{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:28px;
+  margin-top:clamp(36px,4vw,50px); padding-top:clamp(28px,3vw,36px);
+  border-top:1px solid var(--line); text-align:center;
+}
+.stats-strip__item b{
+  display:block; font-family:var(--ff-display); font-weight:800;
+  font-size:clamp(2rem,4vw,3rem); letter-spacing:-.03em; line-height:1.05; color:var(--navy);
+}
+.stats-strip__item span{
+  display:block; margin-top:8px; font-size:.85rem; font-weight:500;
+  color:var(--ink-soft); line-height:1.4;
 }
 
 /* seção de segurança em fundo marinho cheio, mesmo tratamento do rodapé */
@@ -673,10 +691,9 @@ p{margin:0}
 .section--navy .safe__card h3{color:#fff}
 .section--navy .safe__card p{color:rgba(255,255,255,.82)}
 .section--navy .safe__icon{background:rgba(255,255,255,.14); color:#fff}
-.section--navy .safe__foot{
-  background:rgba(255,255,255,.08); border:1px dashed rgba(255,255,255,.3); color:rgba(255,255,255,.82);
-}
-.section--navy .safe__foot strong{color:#fff; font-weight:800}
+.section--navy .stats-strip{border-top-color:rgba(255,255,255,.18)}
+.section--navy .stats-strip__item b{color:#fff}
+.section--navy .stats-strip__item span{color:rgba(255,255,255,.78)}
 
 /* ============================================================
    DEPOIMENTOS
@@ -882,6 +899,7 @@ p{margin:0}
 @media (max-width:1024px){
   .safe{grid-template-columns:1fr}
   .proj-card{flex-basis:min(70%, 520px)}
+  .stats-strip{grid-template-columns:repeat(2,1fr); row-gap:28px}
   .feature-grid,.steps{grid-template-columns:1fr 1fr}
   .step::after{display:none}
   .plans{grid-template-columns:1fr; max-width:520px; margin:0 auto}
@@ -909,6 +927,7 @@ p{margin:0}
   .proj-card{flex-basis:88%}
   .proj__track{gap:16px}
   .proj-card__body{padding:22px 20px 24px}
+  .stats-strip{grid-template-columns:1fr; row-gap:22px}
   .browser__live span{display:none}
   .feature-grid,.steps{grid-template-columns:1fr}
   .quote{padding:28px 24px}
@@ -1144,7 +1163,7 @@ p{margin:0}
             <span class="proj-tag">Dados estruturados</span>
           </div>
           <h3>Dr. Luis Eduardo Rodrigues de Melo</h3>
-          <span class="proj-card__seg">Advocacia previdenciária · INSS · Petrolina-PE</span>
+          <span class="proj-card__seg">Advocacia previdenciária · INSS · Petrolina-PE — 2026</span>
           <p class="proj-card__desc">Público que abre a internet pelo celular e desiste na primeira palavra difícil. Página sem “advoguês”, organizada por situação, para a pessoa se reconhecer em dois segundos.</p>
           <span class="proj-card__go">
             Visitar o site no ar
@@ -1182,7 +1201,7 @@ p{margin:0}
             <span class="proj-tag">SEO técnico</span>
           </div>
           <h3>Benício Advogados</h3>
-          <span class="proj-card__seg">Advocacia criminal e imobiliária · Petrolina-PE</span>
+          <span class="proj-card__seg">Advocacia criminal e imobiliária · Petrolina-PE — 2026</span>
           <p class="proj-card__desc">Dois públicos com urgências opostas no mesmo site. A página separa os caminhos no primeiro clique e manda cada visitante para o advogado certo, com a mensagem já escrita.</p>
           <span class="proj-card__go">
             Visitar o site no ar
@@ -1191,6 +1210,19 @@ p{margin:0}
         </div>
       </a>
       <!-- =============== FIM DO PROJETO 2 =============== -->
+
+      <!-- ================= CARD DE CHAMADA (não é projeto) ================= -->
+      <div class="proj-card proj-card--cta">
+        <div class="proj-card__body">
+          <h3>Seu projeto pode ser o próximo.</h3>
+          <p class="proj-card__desc">Me conte o que você faz, mande suas referências e receba uma página pensada para o seu público.</p>
+          <a class="btn btn--wa js-wa" href="#" data-msg="Olá, Daniel! Vi os seus projetos e quero o meu.">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.02c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.24c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.7 8.23 8.23s-3.7 8.24-8.23 8.24m4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.01-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.17 1.75 2.79 4.25 3.81.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.49-.61 1.7-1.2.21-.59.21-1.1.15-1.2-.06-.11-.23-.17-.48-.29"/></svg>
+            Quero o meu
+          </a>
+        </div>
+      </div>
+      <!-- =============== FIM DO CARD DE CHAMADA =============== -->
 
       <!-- ================================================================
            MODELO PARA O PRÓXIMO PROJETO
@@ -1237,7 +1269,7 @@ p{margin:0}
 
     <div class="proj__more reveal">
       <h3>Seu segmento não está aqui? Sem problema.</h3>
-      <p>Advocacia e saúde são só os primeiros. Se você vende serviço e fecha pelo WhatsApp, seja gráfica, oficina, loja, buffet ou academia, a estrutura é a mesma. Me conta o que você faz.</p>
+      <p>Advocacia e saúde são só os primeiros. Se você vende serviço e fecha pelo WhatsApp, gráfica, oficina, loja, buffet, academia, a estrutura é a mesma. Me conta o que você faz.</p>
     </div>
 
     <div class="proj__cta reveal">
@@ -1375,7 +1407,12 @@ p{margin:0}
       </article>
     </div>
 
-    <p class="safe__foot reveal">E o seu tempo? Custa cerca de <strong>40 minutos</strong> no total: uma conversa para eu entender o seu serviço, o envio das suas fotos e logo, e a sua aprovação no final. O resto é comigo.</p>
+    <div class="stats-strip reveal">
+      <div class="stats-strip__item"><b>3 dias</b><span>prazo mínimo de entrega</span></div>
+      <div class="stats-strip__item"><b>50%</b><span>só na aprovação do site</span></div>
+      <div class="stats-strip__item"><b>2 horas</b><span>tempo médio de resposta</span></div>
+      <div class="stats-strip__item"><b>40 minutos</b><span>do seu tempo, no projeto todo</span></div>
+    </div>
   </div>
 </section>
 
