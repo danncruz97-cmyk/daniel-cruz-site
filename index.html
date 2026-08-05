@@ -1119,7 +1119,7 @@ p{margin:0}
 
     <div class="proj__head">
       <div class="section-head reveal">
-        <span class="counter"><b>2</b><span>sites no ar agora</span></span>
+        <span class="counter"><b>3</b><span>sites no ar agora</span></span>
         <h2>Sites que já estão trabalhando pelos meus clientes.</h2>
         <p class="lead">Clique em qualquer projeto para abrir o site real e navegar como o cliente dele navega.</p>
       </div>
@@ -1176,6 +1176,44 @@ p{margin:0}
 
       <!-- ================= PROJETO 2 ================= -->
       <a class="proj-card"
+         href="https://campus-copy-landing-page.vercel.app/"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Abrir o site da Campus Copy em uma nova aba">
+
+        <div class="browser" aria-hidden="true">
+          <span class="browser__dots"><i></i><i></i><i></i></span>
+          <span class="browser__url">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            campus-copy-landing-page.vercel.app
+          </span>
+          <span class="browser__live"><i></i><span>No ar</span></span>
+        </div>
+
+        <div class="proj-card__screen">
+          <img src="assets/img/projeto-campus-copy-desktop.png"
+               width="1314" height="848" loading="lazy"
+               alt="Site da Campus Copy, gráfica em Petrolina, na versão desktop">
+        </div>
+
+        <div class="proj-card__body">
+          <div class="proj-card__tags">
+            <span class="proj-tag">Pacote Conversão</span>
+            <span class="proj-tag">Dois públicos</span>
+            <span class="proj-tag">SEO local</span>
+          </div>
+          <h3>Campus Copy</h3>
+          <span class="proj-card__seg">Gráfica e impressão rápida · Petrolina-PE — 2026</span>
+          <p class="proj-card__desc">Gráfica presencial em Petrolina que também atende pelo WhatsApp: o cliente manda o PDF e recebe o orçamento na hora, sem sair de casa. A página separa o que se imprime para estudante do que se imprime para empresa, antes de qualquer pergunta.</p>
+          <span class="proj-card__go">
+            Visitar o site no ar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      <!-- =============== FIM DO PROJETO CAMPUS COPY =============== -->
+
+      <!-- ================= PROJETO 3 ================= -->
+      <a class="proj-card"
          href="https://drallyssonbenicio.vercel.app/"
          target="_blank" rel="noopener noreferrer"
          aria-label="Abrir o site do Benício Advogados em uma nova aba">
@@ -1210,7 +1248,7 @@ p{margin:0}
           </span>
         </div>
       </a>
-      <!-- =============== FIM DO PROJETO 2 =============== -->
+      <!-- =============== FIM DO PROJETO 3 =============== -->
 
       <!-- ================= CARD DE CHAMADA (não é projeto) ================= -->
       <div class="proj-card proj-card--cta">
@@ -1270,7 +1308,7 @@ p{margin:0}
 
     <div class="proj__more reveal">
       <h3>Seu segmento não está aqui? Sem problema.</h3>
-      <p>Advocacia e saúde são só os primeiros. Se você vende serviço e fecha pelo WhatsApp, gráfica, oficina, loja, buffet, academia, a estrutura é a mesma. Me conta o que você faz.</p>
+      <p>Advocacia e gráfica são só os primeiros. Se você trabalha e agenda pelo WhatsApp, seja clínica, oficina, loja, buffet ou academia, a estrutura é a mesma. Me conta o que você faz.</p>
     </div>
 
     <div class="proj__cta reveal">
@@ -2001,13 +2039,23 @@ const WHATSAPP_NUMERO = '5574981301345';
         nextBtn.disabled = track.scrollLeft >= maxScroll - 4;
       }
 
-      prevBtn.addEventListener('click', function () { goTo(currentIndex() - 1); });
-      nextBtn.addEventListener('click', function () { goTo(currentIndex() + 1); });
+      /* passo relativo ao scroll atual: evita alvo "preso" quando os
+         últimos cards não preenchem uma viewport inteira e o offsetLeft
+         deles fica além do scroll máximo real */
+      function step(dir) {
+        const passo = cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft) : 0;
+        const max = track.scrollWidth - track.clientWidth;
+        const alvo = Math.max(0, Math.min(max, track.scrollLeft + dir * passo));
+        track.scrollTo({ left: alvo, behavior: reduced ? 'auto' : 'smooth' });
+      }
+
+      prevBtn.addEventListener('click', function () { step(-1); });
+      nextBtn.addEventListener('click', function () { step(1); });
 
       /* setas do teclado quando o foco está dentro do carrossel */
       track.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(currentIndex() + 1); }
-        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(currentIndex() - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
       });
 
       let scrollTick;

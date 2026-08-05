@@ -34,7 +34,9 @@ npx serve
     │   ├── daniel-cruz.jpg           foto do Sobre (em uso)
     │   ├── daniel-cruz-fechado.jpg   corte alternativo, mais aproximado
     │   ├── daniel-cruz.webp          mesma foto, formato leve
-    │   ├── projeto-luis-desktop.webp print do projeto no card
+    │   ├── projeto-luis-desktop.webp print do projeto do Dr. Luis Eduardo no card
+    │   ├── projeto-campus-copy-desktop.png print do projeto da Campus Copy no card
+    │   ├── projeto-allyson-desktop.png print do projeto do Benício Advogados no card
     │   └── projeto-allysson-mobile2.png print do escritório Benício no celular do hero
     ├── logo/
     │   ├── dc-simbolo.svg            símbolo (em uso no cabeçalho)
@@ -66,13 +68,14 @@ pré-preenchida diferente (definida no atributo `data-msg` de cada botão).
 Procure por `SEU-DOMINIO` em `robots.txt` e `sitemap.xml` e substitua.
 
 ### 3. Domínios dos projetos
-Os dois cards da seção **Projetos** apontam para:
+Os três cards de projeto da seção **Projetos** apontam para:
 
-- `https://drluiseduardo.vercel.app` (Dr. Luis Eduardo, 1º card)
-- `https://drallyssonbenicio.vercel.app/` (Benício Advogados, 2º card)
+- `https://www.luiseduardoadv.com.br/` (Dr. Luis Eduardo, 1º card)
+- `https://campus-copy-landing-page.vercel.app/` (Campus Copy, 2º card)
+- `https://drallyssonbenicio.vercel.app/` (Benício Advogados, 3º card)
 
-Confirme que os dois estão no ar antes de publicar, porque a página anuncia
-os dois como "No ar" e o visitante vai clicar.
+Confirme que os três estão no ar antes de publicar, porque a página anuncia
+todos como "No ar" e o visitante vai clicar.
 
 ### 4. Depoimentos reais
 A seção de depoimentos está **guardada comentada** no HTML (procure por
@@ -94,7 +97,9 @@ nenhuma.
 
 Na seção `PROJETOS REALIZADOS`, copie um bloco inteiro
 `<a class="proj-card"> ... </a>` e cole abaixo. Existe um modelo comentado
-logo depois do segundo projeto, pronto para preencher.
+logo depois do card de chamada ("Seu projeto pode ser o próximo"), pronto
+para preencher — cole seu novo card antes dele, para o card de chamada
+continuar por último.
 
 O carrossel se ajusta sozinho:
 
@@ -104,7 +109,9 @@ O carrossel se ajusta sozinho:
 | 2 | lado a lado, com setas e indicadores |
 | 3 ou mais | carrossel com swipe no celular |
 
-Não esqueça de atualizar o contador da seção (`<span class="counter"><b>2</b>`).
+Não esqueça de atualizar o contador da seção (`<span class="counter"><b>3</b>`)
+e a frase do bloco "Seu segmento não está aqui?", que cita os segmentos já
+atendidos por nome.
 
 ---
 
