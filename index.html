@@ -241,25 +241,9 @@ p{margin:0}
   background:#052A35; position:relative;
 }
 .phone__screen img{width:100%; height:100%; object-fit:cover; display:block}
-/* notificação WhatsApp */
-.wa-toast{
-  position:absolute; z-index:6; right:-12px; bottom:2%;
-  display:flex; align-items:center; gap:8px;
-  background:#fff; border:1px solid var(--line); border-radius:13px;
-  padding:9px 13px 9px 10px; box-shadow:var(--shadow-md);
-  opacity:0; transform:translateY(14px) scale(.94);
-  animation:toastIn .65s cubic-bezier(.2,.9,.3,1.1) 1.5s forwards;
-}
 @keyframes toastIn{to{opacity:1; transform:translateY(0) scale(1)}}
-.wa-toast__icon{
-  width:28px; height:28px; border-radius:9px; background:var(--wa);
-  display:grid; place-items:center; color:#fff; flex:0 0 auto;
-}
-.wa-toast__icon svg{width:16px; height:16px}
-.wa-toast b{display:block; font-family:var(--ff-display); font-size:.78rem; letter-spacing:-.01em}
-.wa-toast small{color:var(--ink-soft); font-size:.7rem}
 .wa-badge{
-  position:absolute; z-index:6; right:-18px; top:12%; max-width:200px;
+  position:absolute; z-index:6; right:-18px; top:38%; max-width:200px;
   background:#fff; border:1px solid var(--line); border-radius:14px;
   padding:11px 15px; box-shadow:var(--shadow-md);
   opacity:0; animation:toastIn .6s cubic-bezier(.2,.9,.3,1.1) .9s forwards;
@@ -943,7 +927,6 @@ p{margin:0}
   .wa-float__label{display:none}
   .wa-float{padding:16px; right:16px; bottom:16px}
   .wa-badge{right:-6px}
-  .wa-toast{right:-6px; padding:8px 11px}
   .footer__rules{text-align:left}
 }
 
@@ -951,7 +934,7 @@ p{margin:0}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
   .reveal{opacity:1; transform:none}
-  .wa-toast,.wa-badge{opacity:1; transform:none}
+  .wa-badge{opacity:1; transform:none}
   .progress-bar{transition:none}
 }
 </style>
@@ -1045,26 +1028,16 @@ p{margin:0}
 
       <div class="wa-badge">
         <span class="wa-badge__live"><i></i>No ar</span>
-        <b>Dr. Allysson e Dr. Emmanuel Benício</b>
-        <small>Advocacia Criminal e Imobiliária</small>
+        <b>Anna Livia</b>
+        <small>Psicóloga · TCC</small>
       </div>
 
       <div class="phone">
         <div class="phone__screen">
-          <img src="assets/img/projeto-allysson-mobile2.png"
-               width="360" height="681"
-               alt="Versão mobile do site do escritório Benício Advogados, aberta no celular">
+          <img src="assets/img/projeto-anna-livia-mobile.png"
+               width="403" height="872"
+               alt="Versão mobile do site da psicóloga Anna Livia, aberta no celular">
         </div>
-      </div>
-
-      <div class="wa-toast">
-        <span class="wa-toast__icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2"/></svg>
-        </span>
-        <span>
-          <b>Novo cliente</b>
-          <small>“Preciso proteger meu patrimônio imobiliário. Pode me ajudar?”</small>
-        </span>
       </div>
     </div>
   </div>
