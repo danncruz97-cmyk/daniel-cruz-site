@@ -241,6 +241,11 @@ p{margin:0}
   background:#052A35; position:relative;
 }
 .phone__screen img{width:100%; height:100%; object-fit:cover; display:block}
+.phone__slide{
+  position:absolute; inset:0; opacity:0;
+  transition:opacity 1.1s ease;
+}
+.phone__slide.is-active{opacity:1}
 @keyframes toastIn{to{opacity:1; transform:translateY(0) scale(1)}}
 .wa-badge{
   position:absolute; z-index:6; right:-18px; top:38%; max-width:200px;
@@ -567,11 +572,7 @@ p{margin:0}
   letter-spacing:.12em; text-transform:uppercase; color:var(--navy); margin-bottom:10px;
 }
 .plan__for{font-size:.93rem; color:var(--ink-soft); line-height:1.55; min-height:66px}
-.plan__price{margin:22px 0 4px; display:flex; align-items:baseline; gap:7px; flex-wrap:wrap}
-.plan__price b{font-family:var(--ff-display); font-weight:800; font-size:2.5rem; letter-spacing:-.04em; line-height:1}
-.plan__price span{font-size:.88rem; color:var(--ink-soft); font-weight:500}
-.plan__pay{font-size:.85rem; color:var(--ink-soft); margin-bottom:24px}
-.plan__list{margin:0 0 24px; padding:0; display:grid; gap:11px}
+.plan__list{margin:28px 0 24px; padding:0; display:grid; gap:11px}
 .plan__list li{list-style:none; display:flex; gap:11px; font-size:.94rem; line-height:1.5; align-items:flex-start}
 .plan__list svg{width:18px; height:18px; flex:0 0 auto; color:var(--wa-dark); margin-top:3px}
 .plan__list li:first-child{font-weight:600}
@@ -583,11 +584,6 @@ p{margin:0}
 .plan__meta dt{color:var(--ink-soft)}
 .plan__meta dd{margin:0; font-weight:600; font-family:var(--ff-display)}
 .plans__note{margin-top:26px; font-size:.85rem; color:var(--ink-soft); text-align:center}
-
-/* bloco discreto para orçamento sob medida, acima da tabela de precos */
-.plans__custom{margin:22px auto 0; max-width:520px; text-align:center}
-.plans__custom h3{font-size:1.05rem; color:var(--navy); margin-bottom:8px}
-.plans__custom p{font-size:.9rem; color:var(--ink-soft); line-height:1.55; margin-bottom:18px}
 
 /* ancoragem no retorno: uma pergunta de resposta óbvia */
 .worth{
@@ -601,10 +597,6 @@ p{margin:0}
 }
 .worth p{font-size:1.03rem; color:var(--ink-soft); line-height:1.65; margin:0 auto; max-width:46ch}
 .worth strong{color:var(--ink); font-weight:700}
-.plan__from{
-  display:block; width:100%; font-size:.78rem; font-weight:600; color:var(--ink-soft);
-  letter-spacing:.02em; margin-bottom:-2px;
-}
 
 /* botao de acao secundario, em verde (nao parece desabilitado) */
 .btn--wa-line{background:#fff; color:var(--wa-dark); border-color:#9EE7BC}
@@ -1026,17 +1018,34 @@ p{margin:0}
     <div class="mock reveal" data-d="2" aria-hidden="true">
       <div class="mock__glow"></div>
 
-      <div class="wa-badge">
+      <div class="wa-badge" id="heroBadge">
         <span class="wa-badge__live"><i></i>No ar</span>
-        <b>Anna Livia</b>
-        <small>Psicóloga · TCC</small>
+        <b id="heroBadgeName">Anna Livia</b>
+        <small id="heroBadgeSeg">Psicóloga · TCC</small>
       </div>
 
       <div class="phone">
-        <div class="phone__screen">
-          <img src="assets/img/projeto-anna-livia-mobile.png"
+        <div class="phone__screen" id="heroSlides">
+          <img class="phone__slide is-active"
+               src="assets/img/projeto-anna-livia-mobile.png"
                width="403" height="872"
-               alt="Versão mobile do site da psicóloga Anna Livia, aberta no celular">
+               alt="Versão mobile do site da psicóloga Anna Livia, aberta no celular"
+               data-name="Anna Livia" data-seg="Psicóloga · TCC">
+          <img class="phone__slide"
+               src="assets/img/projeto-campus-copy-mobile.png"
+               width="398" height="869"
+               alt="Versão mobile do site da gráfica Campus Copy, aberta no celular"
+               data-name="Campus Copy" data-seg="Gráfica e impressão rápida">
+          <img class="phone__slide"
+               src="assets/img/projeto-luis-mobile.webp"
+               width="366" height="795"
+               alt="Versão mobile do site do Dr. Luis Eduardo Rodrigues de Melo, aberta no celular"
+               data-name="Dr. Luis Eduardo" data-seg="Advocacia previdenciária · INSS">
+          <img class="phone__slide"
+               src="assets/img/projeto-allysson-mobile2.png"
+               width="360" height="681"
+               alt="Versão mobile do site do Benício Advogados, aberta no celular"
+               data-name="Benício Advogados" data-seg="Advocacia criminal e imobiliária">
         </div>
       </div>
     </div>
@@ -1116,7 +1125,7 @@ p{margin:0}
 
       <!-- ================= PROJETO 1 ================= -->
       <a class="proj-card"
-         href="https://anna-livia-site.vercel.app/"
+         href="https://annaliviapsi.com.br/"
          target="_blank" rel="noopener noreferrer"
          aria-label="Abrir o site da psicóloga Anna Livia em uma nova aba">
 
@@ -1124,7 +1133,7 @@ p{margin:0}
           <span class="browser__dots"><i></i><i></i><i></i></span>
           <span class="browser__url">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            anna-livia-site.vercel.app
+            annaliviapsi.com.br
           </span>
           <span class="browser__live"><i></i><span>No ar</span></span>
         </div>
@@ -1480,9 +1489,6 @@ p{margin:0}
         <span class="plan__name">Presença</span>
         <p class="plan__for">Para existir profissionalmente na internet e ter um link para mandar quando alguém pedir.</p>
 
-        <div class="plan__price"><b>R$ 497</b><span>à vista no Pix</span></div>
-        <p class="plan__pay">ou até 2x no cartão*</p>
-
         <ul class="plan__list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Página única com as informações essenciais do seu negócio</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Você me envia os textos prontos</span></li>
@@ -1497,7 +1503,7 @@ p{margin:0}
           <div><dt>Ajustes</dt><dd>1 rodada</dd></div>
         </dl>
 
-        <a class="btn btn--wa-line btn--block js-wa" href="#" data-msg="Olá, Daniel! Quero o Pacote Presença (R$ 497).">Quero o Pacote Presença</a>
+        <a class="btn btn--wa-line btn--block js-wa" href="#" data-msg="Olá, Daniel! Quero o Pacote Presença.">Quero o Pacote Presença</a>
       </article>
 
       <!-- CONVERSÃO (destaque) -->
@@ -1505,9 +1511,6 @@ p{margin:0}
         <span class="plan__ribbon">Minha recomendação</span>
         <span class="plan__name">Conversão</span>
         <p class="plan__for">Para transformar quem visita em quem manda mensagem no WhatsApp. É o menor pacote que já entrega a página com a estrutura de conversão completa.</p>
-
-        <div class="plan__price"><b>R$ 897</b><span>à vista no Pix</span></div>
-        <p class="plan__pay">ou até 6x no cartão*</p>
 
         <ul class="plan__list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Tudo do pacote Presença</span></li>
@@ -1523,7 +1526,7 @@ p{margin:0}
           <div><dt>Ajustes</dt><dd>2 rodadas</dd></div>
         </dl>
 
-        <a class="btn btn--wa btn--block js-wa" href="#" data-msg="Olá, Daniel! Quero o Pacote Conversão (R$ 897).">
+        <a class="btn btn--wa btn--block js-wa" href="#" data-msg="Olá, Daniel! Quero o Pacote Conversão.">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2"/></svg>
           Quero o Pacote Conversão
         </a>
@@ -1533,9 +1536,6 @@ p{margin:0}
       <article class="plan reveal" data-d="2">
         <span class="plan__name">Autoridade</span>
         <p class="plan__for">Para sustentar investimento em anúncio, medir resultado e justificar preço alto.</p>
-
-        <div class="plan__price"><small class="plan__from">a partir de</small><b>R$ 1.497</b><span>à vista no Pix</span></div>
-        <p class="plan__pay">ou até 12x no cartão*</p>
 
         <ul class="plan__list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg> <span>Tudo do pacote Conversão</span></li>
@@ -1551,17 +1551,11 @@ p{margin:0}
           <div><dt>Ajustes</dt><dd>3 rodadas</dd></div>
         </dl>
 
-        <a class="btn btn--wa-line btn--block js-wa" href="#" data-msg="Olá, Daniel! Quero o Pacote Autoridade (R$ 1.497).">Quero o Pacote Autoridade</a>
+        <a class="btn btn--wa-line btn--block js-wa" href="#" data-msg="Olá, Daniel! Quero o Pacote Autoridade.">Quero o Pacote Autoridade</a>
       </article>
     </div>
 
-    <p class="plans__note reveal">Não sabe qual escolher? Me chame no WhatsApp e eu indico o pacote certo para o seu momento.</p>
-
-    <div class="plans__custom reveal">
-      <h3>Precisa de algo fora desses pacotes?</h3>
-      <p>Clínica com várias especialidades, mais de uma página ou identidade construída do zero: isso eu orço à parte, depois de entender o que você precisa.</p>
-      <a class="btn btn--wa-line js-wa" href="#" data-msg="Olá, Daniel! Preciso de um projeto sob medida. Meu negócio é:">Quero um orçamento sob medida</a>
-    </div>
+    <p class="plans__note reveal">Os projetos começam em <strong>R$ 497</strong> e o valor final depende do tamanho da página. Me chame no WhatsApp que eu indico o pacote certo e passo o valor do seu caso.</p>
 
     <div class="worth reveal">
       <h3>Um cliente seu vale mais de R$ 497?</h3>
@@ -1714,6 +1708,18 @@ p{margin:0}
     </div>
 
     <div class="faq reveal" data-d="1">
+      <div class="faq__item">
+        <h3>
+          <button class="faq__q" aria-expanded="false" aria-controls="faq-preco">
+            Quanto custa?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__a" id="faq-preco" role="region">
+          <div>Os projetos começam em R$ 497 e variam conforme o tamanho da página e se você me envia os textos prontos ou prefere que eu escreva. <a href="#" class="js-wa" style="color:var(--navy); font-weight:600" data-msg="Olá, Daniel! Quero saber o valor para o meu caso. Meu negócio é:">Me chame no WhatsApp</a> que eu te digo o valor do seu caso em poucos minutos.</div>
+        </div>
+      </div>
+
       <div class="faq__item">
         <h3>
           <button class="faq__q" aria-expanded="false" aria-controls="faq-1">
@@ -1948,6 +1954,24 @@ const WHATSAPP_NUMERO = '5574981301345';
       burger.setAttribute('aria-expanded', 'false');
     });
   });
+
+  /* ---- mockup do hero: alterna entre os projetos, com transição ---- */
+  const heroSlides = document.querySelectorAll('#heroSlides .phone__slide');
+
+  if (heroSlides.length > 1 && !reduced) {
+    const heroBadgeName = document.getElementById('heroBadgeName');
+    const heroBadgeSeg = document.getElementById('heroBadgeSeg');
+    let heroIndex = 0;
+
+    setInterval(function () {
+      heroSlides[heroIndex].classList.remove('is-active');
+      heroIndex = (heroIndex + 1) % heroSlides.length;
+      const next = heroSlides[heroIndex];
+      next.classList.add('is-active');
+      if (heroBadgeName) heroBadgeName.textContent = next.dataset.name;
+      if (heroBadgeSeg) heroBadgeSeg.textContent = next.dataset.seg;
+    }, 4200);
+  }
 
   /* ---- FAQ sanfona (uma resposta aberta por vez) ---- */
   const faqButtons = document.querySelectorAll('.faq__q');
